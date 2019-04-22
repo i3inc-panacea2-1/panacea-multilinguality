@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28809.33
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panacea.Multilinguality", "Panacea.Multilinguality\Panacea.Multilinguality.csproj", "{77E3B8A8-FD23-46D7-8323-2E4644D10079}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77E3B8A8-FD23-46D7-8323-2E4644D10079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E3B8A8-FD23-46D7-8323-2E4644D10079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E3B8A8-FD23-46D7-8323-2E4644D10079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E3B8A8-FD23-46D7-8323-2E4644D10079}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBFBD892-D559-466C-8AB4-604254069D96}
+	EndGlobalSection
+EndGlobal
