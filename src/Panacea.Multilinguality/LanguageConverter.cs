@@ -114,8 +114,6 @@ namespace Panacea.Multilinguality
             get { return string.IsNullOrEmpty(_vid); }
         }
 
-        private static LanguageDictionary Dictionary;
-
         private static LanguageDictionary ResolveDictionary()
         {
             return LanguageDictionary.Instance;
