@@ -54,8 +54,10 @@
     <Compile Include="IsTranslatableAttribute.cs" />
     <Compile Include="PropertyChangedBase.cs" />
     <Compile Include="TranslatableDictionary.cs" />
+    <Compile Include="TranslatableObject.cs" />
     <Compile Include="Translate.cs" />
     <Compile Include="Translation.cs" />
+    <Compile Include="Translator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
