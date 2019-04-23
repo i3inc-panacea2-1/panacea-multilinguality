@@ -114,10 +114,5 @@ namespace Panacea.Multilinguality
                             nameof(LanguageContext.LanguageChanged),
                             OnLanguageChanged);
         }
-
-
     }
-
-
-   
 }
