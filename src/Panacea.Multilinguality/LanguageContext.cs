@@ -37,13 +37,11 @@ namespace Panacea.Multilinguality
                 {
                     throw new ArgumentNullException("Culture must not be null");
                 }
-                if (value == _cultureInfo)
+                if (_cultureInfo != null && value.Name == _cultureInfo.Name)
                 {
                     return;
                 }
-                if (_cultureInfo != null)
-                {
-                }
+                
                 _cultureInfo = value;
 
                 Thread.CurrentThread.CurrentUICulture = _cultureInfo;
