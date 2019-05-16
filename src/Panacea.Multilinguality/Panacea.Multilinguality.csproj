@@ -52,7 +52,6 @@
     <Compile Include="Translatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IsTranslatableAttribute.cs" />
-    <Compile Include="PropertyChangedBase.cs" />
     <Compile Include="TranslatableDictionary.cs" />
     <Compile Include="TranslatableObject.cs" />
     <Compile Include="Translate.cs" />

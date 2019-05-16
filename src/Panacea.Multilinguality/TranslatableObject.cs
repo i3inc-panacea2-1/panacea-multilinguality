@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace Panacea.Multilinguality
             Text = string.Format(translator.Translate(text), args);
             WeakEventManager<LanguageContext, PropertyChangedEventArgs>
                 .AddHandler(LanguageContext.Instance,
-                            nameof(LanguageContext.PropertyChanged),
+                            nameof(LanguageContext.CultureChanged),
                             OnLanguageContextPropertyChanged);
 
         }
@@ -70,29 +71,26 @@ namespace Panacea.Multilinguality
                 }
                 if (trans != null)
                 {
-                    WeakEventManager<LanguageContext, PropertyChangedEventArgs>
+                    WeakEventManager<LanguageContext, EventArgs>
                         .AddHandler(LanguageContext.Instance,
-                           nameof(LanguageContext.PropertyChanged),
+                           nameof(LanguageContext.CultureChanged),
                            (oo, ee) =>
-                    {
-                        try
-                        {
-                            if (ee.PropertyName == "Culture")
-                            {
-                                Text = trans[LanguageContext.Instance.Culture.Name].Value;
-                            }
-                        }
-                        catch
-                        {
-                            try
-                            {
-                                Text = obj2.Value;
-                            }
-                            catch
-                            {
-                            }
-                        }
-                    });
+                           {
+                               try
+                               {
+                                   Text = trans[LanguageContext.Instance.Culture.Name].Value;
+                               }
+                               catch
+                               {
+                                   try
+                                   {
+                                       Text = obj2.Value;
+                                   }
+                                   catch
+                                   {
+                                   }
+                               }
+                           });
                     try
                     {
                         Text = trans[LanguageContext.Instance.Culture.Name].Value;

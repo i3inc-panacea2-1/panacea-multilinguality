@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Panacea.Multilinguality
 {
-    public sealed class LanguageContext : PropertyChangedBase
+    public sealed class LanguageContext 
     {
         #region Fields
 
@@ -21,6 +21,7 @@ namespace Panacea.Multilinguality
 
         #region Properties
 
+        public event EventHandler CultureChanged;
         public CultureInfo Culture
         {
             get
@@ -43,10 +44,8 @@ namespace Panacea.Multilinguality
                 }
                 
                 _cultureInfo = value;
-
+                CultureChanged?.Invoke(this, EventArgs.Empty);
                 Thread.CurrentThread.CurrentUICulture = _cultureInfo;
-                OnPropertyChanged("Culture");
-                OnPropertyChanged("Dictionary");
             }
         }
 
@@ -58,7 +57,6 @@ namespace Panacea.Multilinguality
                 if (value != null && value != _dictionary)
                 {
                     _dictionary = value;
-                    OnPropertyChanged("Dictionary");
                 }
             }
         }

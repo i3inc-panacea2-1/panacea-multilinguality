@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -11,10 +12,14 @@ using System.Windows;
 namespace Panacea.Multilinguality
 {
     [DataContract]
-    public abstract class Translatable : PropertyChangedBase
+    public abstract class Translatable :INotifyPropertyChanged
     {
+
         protected Dictionary<string, Dictionary<string, object>> _translations;
         protected Dictionary<string, object> _defaults;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected Dictionary<string, object> Defaults
         {
             get
@@ -25,6 +30,15 @@ namespace Panacea.Multilinguality
             {
                 _defaults = value;
             }
+        }
+
+        public Translatable()
+        {
+            Defaults = new Dictionary<string, object>();
+            WeakEventManager<LanguageContext, EventArgs>
+                .AddHandler(LanguageContext.Instance,
+                            nameof(LanguageContext.LanguageChanged),
+                            OnLanguageChanged);
         }
 
         protected string GetTranslation([CallerMemberName] string prop = null)
@@ -75,8 +89,6 @@ namespace Panacea.Multilinguality
                 Defaults.Add(prop, val);
         }
 
-
-
         [DataMember(Name = "trans")]
         public Dictionary<string, Dictionary<string, object>> Translations
         {
@@ -87,12 +99,6 @@ namespace Panacea.Multilinguality
                 OnLanguageChanged(null, null);
             }
         }
-#if DEBUG
-        ~Translatable()
-        {
-            //Console.WriteLine("~Translatable");
-        }
-#endif
 
         protected void OnLanguageChanged(object sender, EventArgs e)
         {
@@ -106,13 +112,10 @@ namespace Panacea.Multilinguality
             }
         }
 
-        public Translatable()
+        protected virtual void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            Defaults = new Dictionary<string, object>();
-            WeakEventManager<LanguageContext, EventArgs>
-                .AddHandler(LanguageContext.Instance,
-                            nameof(LanguageContext.LanguageChanged),
-                            OnLanguageChanged);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+       
     }
 }
