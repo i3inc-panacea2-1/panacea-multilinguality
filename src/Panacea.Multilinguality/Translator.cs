@@ -19,11 +19,15 @@ namespace Panacea.Multilinguality
 
         public string Translate(string text)
         {
+            if (LanguageContext.Instance?.Dictionary == null)
+                return text;
             return LanguageContext.Instance.Dictionary.Translate(text, _namespac);
         }
 
         public string Translate(string text, params object[] args)
         {
+            if (LanguageContext.Instance?.Dictionary == null)
+                return string.Format(text, args);
             return string.Format(LanguageContext.Instance.Dictionary.Translate(text, _namespac), args);
         }
 
