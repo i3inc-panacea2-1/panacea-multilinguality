@@ -41,6 +41,17 @@ namespace Panacea.Multilinguality
                             }
                             return s;
                         }
+                        // patch to search for core
+                        else if (trans.ContainsKey("core"))
+                        {
+                            var res = translations[LanguageContext.Instance.Culture.Name]["core"];
+                            if (res.ContainsKey(s))
+                            {
+                                return
+                                    res[s];
+                            }
+                            return s;
+                        }
                     }
                 }
             }
