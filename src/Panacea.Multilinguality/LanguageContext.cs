@@ -17,7 +17,7 @@ namespace Panacea.Multilinguality
         public static readonly LanguageContext Instance = new LanguageContext();
 
         private CultureInfo _cultureInfo;
-        private LanguageDictionary _dictionary;
+        private LanguageDictionary _dictionary = LanguageDictionary.Instance;
 
         #endregion
 
@@ -49,6 +49,7 @@ namespace Panacea.Multilinguality
                 CultureChanged?.Invoke(this, EventArgs.Empty);
                 Thread.CurrentThread.CurrentUICulture = _cultureInfo;
                 OnPropChanged(nameof(Dictionary));
+                OnPropChanged(nameof(Culture));
             }
         }
 
@@ -77,7 +78,7 @@ namespace Panacea.Multilinguality
         public event EventHandler LanguageChanged;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropChanged([CallerMemberName] string name = null)
+        private void OnPropChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
