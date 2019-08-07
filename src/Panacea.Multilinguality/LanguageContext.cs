@@ -73,6 +73,16 @@ namespace Panacea.Multilinguality
 
         #endregion
 
-        public event EventHandler LanguageChanged;
+        public event EventHandler LanguageChanged
+        {
+            add
+            {
+
+            }
+            remove
+            {
+
+            }
+        }
     }
 }
