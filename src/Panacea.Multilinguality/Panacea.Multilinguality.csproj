@@ -46,6 +46,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingProxy.cs" />
     <Compile Include="LanguageContext.cs" />
     <Compile Include="LanguageConverter.cs" />
     <Compile Include="LanguageDictionary.cs" />

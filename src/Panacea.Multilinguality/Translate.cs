@@ -124,8 +124,9 @@ namespace Panacea.Multilinguality
             string uid = _uid ?? GetUid(_target);
             string vid = _property.Name;
 
-            var binding = new Binding(nameof(LanguageContext.Culture));
-            binding.Source = LanguageContext.Instance;
+            var proxy = new BindingProxy();
+            var binding = new Binding(nameof(BindingProxy.ProxyProperty));
+            binding.Source = proxy;
             binding.Mode = BindingMode.TwoWay;
             var converter = new LanguageConverter(uid, vid, _default, _namespace);
             if (_parameters.Count == 0)

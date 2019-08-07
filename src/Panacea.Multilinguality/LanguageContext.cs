@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Panacea.Multilinguality
 {
-    public sealed class LanguageContext : INotifyPropertyChanged
+    public sealed class LanguageContext
     {
         #region Fields
 
@@ -46,10 +46,8 @@ namespace Panacea.Multilinguality
                 }
                 
                 _cultureInfo = value;
-                CultureChanged?.Invoke(this, EventArgs.Empty);
                 Thread.CurrentThread.CurrentUICulture = _cultureInfo;
-                OnPropChanged(nameof(Dictionary));
-                OnPropChanged(nameof(Culture));
+                CultureChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -76,11 +74,5 @@ namespace Panacea.Multilinguality
         #endregion
 
         public event EventHandler LanguageChanged;
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }
