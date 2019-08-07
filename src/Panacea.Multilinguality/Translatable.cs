@@ -37,7 +37,7 @@ namespace Panacea.Multilinguality
             Defaults = new Dictionary<string, object>();
             WeakEventManager<LanguageContext, EventArgs>
                 .AddHandler(LanguageContext.Instance,
-                            nameof(LanguageContext.LanguageChanged),
+                            nameof(LanguageContext.CultureChanged),
                             OnLanguageChanged);
         }
 
