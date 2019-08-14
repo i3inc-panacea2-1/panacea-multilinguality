@@ -32,19 +32,16 @@ namespace Panacea.Multilinguality
             _translator = translator;
             _args = args;
             Text = string.Format(translator.Translate(text), args);
-            WeakEventManager<LanguageContext, PropertyChangedEventArgs>
+            WeakEventManager<LanguageContext, EventArgs>
                 .AddHandler(LanguageContext.Instance,
                             nameof(LanguageContext.CultureChanged),
                             OnLanguageContextPropertyChanged);
 
         }
 
-        private void OnLanguageContextPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnLanguageContextPropertyChanged(object sender, EventArgs e)
         {
-            if (e.PropertyName == "Culture")
-            {
-                Text = string.Format(_translator?.Translate(_text), _args);
-            }
+            Text = string.Format(_translator?.Translate(_text), _args);
         }
 
         public TranslatableObject(dynamic obj, params string[] fields)
